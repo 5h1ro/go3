@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="15" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
+      ::-webkit-scrollbar-button {
+        display: none;
+      }
+
+      ::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        cursor: pointer;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+        width: calc(2px * 2);
+        border: 2px solid rgba(26, 26, 26, 0);
+      }
+
+      ::-webkit-scrollbar-track-piece {
+        background: transparent;
+        width: calc(2px / 2);
+        border: 2px solid rgba(26, 26, 26, 0);
+      }
+
+      body {
+        scrollbar-face-color: rgba(255, 255, 255, 0.15);
+        scrollbar-track-color: transparent;
+      }
+
+      div {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        font-size: 50px;
+      }
+
+      body {
+        display: grid;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        color: rgb(255, 255, 255);
+        background: rgb(245, 245, 245);
+        background-size: 50% 100%;
+      }
+      body .card {
+        margin: auto;
+        padding: 1em;
+        border-radius: 1em;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+        background: rgba(255, 255, 255, 0.2);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        transform: perspective(500px);
+        transform-style: preserve-3d;
+        text-align: center;
+      }
+      body .card .welcome {
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        transform: translateZ(20px);
+      }
+      body .card .year {
+        margin-top: 20px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+      }
+      body .card .year span {
+        margin-top: 5px;
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex">
+      {{if le .Water 5}}
+      <div class="card" style="background-color: rgba(0, 255, 55, 0.4)">
+        <div class="welcome">Water</div>
+        <div class="year">
+          {{.Water}} m
+          <span>Aman</span>
+        </div>
+        {{else if and (gt .Water 5) (lt .Water 9)}}
+        <div class="card" style="background-color: rgba(251, 255, 0, 0.4)">
+          <div class="welcome">Water</div>
+          <div class="year">
+            {{.Water}} m
+            <span>Siaga</span>
+          </div>
+        {{else}}
+        <div class="card" style="background-color: rgba(255, 0, 0, 0.4)">
+          <div class="welcome">Water</div>
+          <div class="year">
+            {{.Water}} m
+            <span>Bahaya</span>
+          </div>
+        {{end}}
+      </div>
+      {{if le .Wind 6}}
+      <div class="card" style="background-color: rgba(0, 255, 55, 0.4)">
+        <div class="welcome">Wind</div>
+        <div class="year">
+          {{.Wind}} m/s
+          <span>Aman</span>
+        </div>
+        {{else if and (gt .Wind 6) (lt .Wind 16)}}
+        <div class="card" style="background-color: rgba(251, 255, 0, 0.4)">
+          <div class="welcome">Wind</div>
+          <div class="year">
+            {{.Wind}} m/s
+            <span>Siaga</span>
+          </div>
+        {{else}}
+        <div class="card" style="background-color: rgba(255, 0, 0, 0.4)">
+          <div class="welcome">Wind</div>
+          <div class="year">
+            {{.Wind}} m/s
+            <span>Bahaya</span>
+          </div>
+        {{end}}
+      </div>
+    </div>
+  </body>
+</html>
